@@ -97,4 +97,51 @@ class DiagnosticsServiceTest {
 
         service.readStoredDtcs()
     }
+
+    @Test
+    fun `readVin disables polling and sends VIN commands`() = runTest {
+        val obdManager = mockk<ObdManager>()
+
+        coEvery { obdManager.setPollingEnabled(false) } just Runs
+        coEvery { obdManager.send("0902") } just Runs
+        coEvery { obdManager.send("0151") } just Runs
+
+        val service = DiagnosticsService(obdManager)
+
+        service.readVin()
+
+        coVerify { obdManager.setPollingEnabled(false) }
+        coVerify { obdManager.send("0902") }
+        coVerify { obdManager.send("0151") }
+    }
+
+    @Test
+    fun `readVin sends commands in correct order`() = runTest {
+        val obdManager = mockk<ObdManager>()
+
+        coEvery { obdManager.setPollingEnabled(false) } just Runs
+        coEvery { obdManager.send(any()) } just Runs
+
+        val service = DiagnosticsService(obdManager)
+
+        service.readVin()
+
+        coVerifyOrder {
+            obdManager.setPollingEnabled(false)
+            obdManager.send("0902")
+            obdManager.send("0151")
+        }
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun `readVin propagates communication error`() = runTest {
+        val obdManager = mockk<ObdManager>()
+
+        coEvery { obdManager.setPollingEnabled(false) } just Runs
+        coEvery { obdManager.send("0902") } throws RuntimeException("Bluetooth error")
+
+        val service = DiagnosticsService(obdManager)
+
+        service.readVin()
+    }
 }

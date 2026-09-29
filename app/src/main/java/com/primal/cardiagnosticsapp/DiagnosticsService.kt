@@ -22,4 +22,10 @@ class DiagnosticsService(
     suspend fun resumePolling() {
         obdManager.setPollingEnabled(true)
     }
+
+    suspend fun readVin() {
+        obdManager.setPollingEnabled(false)
+        obdManager.send("0902")
+        obdManager.send("0151")
+    }
 }

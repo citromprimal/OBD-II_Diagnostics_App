@@ -424,11 +424,8 @@ fun HomeScreen(
                             isReadingVin = true
                             elmResponseBuffer.clear()
 
-                            manager.setPollingEnabled(false)
                             delay(200)
-                            manager.send("0902")
-                            delay(500)
-                            manager.send("0151")
+                            diagnosticsService.readVin()
                         }
                     },
                     onReadDtcs = {

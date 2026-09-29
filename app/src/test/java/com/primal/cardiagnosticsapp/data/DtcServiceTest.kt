@@ -196,4 +196,96 @@ class DtcServiceTest {
 
         assertTrue(result)
     }
+
+    @Test
+    fun `returns false when same code occurs different number of times`() = runTest {
+        val dataSource = mockk<DtcDataSource>()
+
+        val latestScan = DtcScanHistoryRow(
+            id = "scan-1",
+            userId = "user-1",
+            vehicleId = "vehicle-1",
+            scannedAt = "2026-09-29T12:00:00",
+            totalCount = 2,
+            criticalCount = 0,
+            warningCount = 2,
+            infoCount = 0
+        )
+
+        val latestItems = listOf(
+            DtcScanItemHistoryRow(
+                id = "item-1",
+                userId = "user-1",
+                scanId = "scan-1",
+                code = "P0300",
+                severity = "WARNING"
+            ),
+            DtcScanItemHistoryRow(
+                id = "item-2",
+                userId = "user-1",
+                scanId = "scan-1",
+                code = "P0300",
+                severity = "WARNING"
+            )
+        )
+
+        coEvery {
+            dataSource.getScanHistory("user-1", "vehicle-1")
+        } returns listOf(latestScan)
+
+        coEvery {
+            dataSource.getScanItems("user-1", "scan-1")
+        } returns latestItems
+
+        val service = DtcService(dataSource)
+
+        val newDtcs = listOf(
+            DtcItem(
+                code = "P0300",
+                severity = DtcSeverity.WARNING
+            )
+        )
+
+        val result = service.isDuplicateOfLatestScan(
+            userId = "user-1",
+            vehicleId = "vehicle-1",
+            dtcs = newDtcs
+        )
+
+        assertFalse(result)
+    }
+
+    @Test
+    fun `returns true when both latest and new scan contain no DTC codes`() = runTest {
+        val dataSource = mockk<DtcDataSource>()
+
+        val latestScan = DtcScanHistoryRow(
+            id = "scan-1",
+            userId = "user-1",
+            vehicleId = "vehicle-1",
+            scannedAt = "2026-09-29T12:00:00",
+            totalCount = 0,
+            criticalCount = 0,
+            warningCount = 0,
+            infoCount = 0
+        )
+
+        coEvery {
+            dataSource.getScanHistory("user-1", "vehicle-1")
+        } returns listOf(latestScan)
+
+        coEvery {
+            dataSource.getScanItems("user-1", "scan-1")
+        } returns emptyList()
+
+        val service = DtcService(dataSource)
+
+        val result = service.isDuplicateOfLatestScan(
+            userId = "user-1",
+            vehicleId = "vehicle-1",
+            dtcs = emptyList()
+        )
+
+        assertTrue(result)
+    }
 }

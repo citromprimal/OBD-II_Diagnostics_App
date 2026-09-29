@@ -5,6 +5,7 @@ plugins {
     kotlin("android")
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
+    id("jacoco")
 }
 
 val localProperties = Properties().apply {
@@ -58,6 +59,10 @@ android {
     packaging { resources.excludes.add("META-INF/*") }
 }
 
+jacoco {
+    toolVersion = "0.8.12"
+}
+
 dependencies {
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.runtime.saveable)
@@ -101,4 +106,38 @@ tasks.withType<Test>().configureEach {
     environment("TEMP", "C:\\Windows\\Temp")
     environment("TMP", "C:\\Windows\\Temp")
     jvmArgs("-Dfile.encoding=UTF-8", "-Dsun.jnu.encoding=UTF-8", "-Djava.io.tmpdir=C:/Windows/Temp")
+}
+
+tasks.register<JacocoReport>("jacocoTestReport") {
+    dependsOn("testDebugUnitTest")
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    val debugTree = fileTree(
+        "${layout.buildDirectory.get()}/tmp/kotlin-classes/debug"
+    ) {
+        include(
+            "**/DiagnosticsService.class",
+            "**/DtcService.class",
+            "**/Elm327Parser.class"
+        )
+    }
+
+    sourceDirectories.setFrom(
+        files("$projectDir/src/main/java")
+    )
+
+    classDirectories.setFrom(files(debugTree))
+
+    executionData.setFrom(
+        fileTree(layout.buildDirectory) {
+            include(
+                "jacoco/testDebugUnitTest.exec",
+                "outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
+            )
+        }
+    )
 }
