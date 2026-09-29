@@ -226,6 +226,10 @@ fun HomeScreen(
         ClassicObdManager(context)
     }
 
+    val diagnosticsService = remember(manager) {
+        DiagnosticsService(manager)
+    }
+
     // ─── STATE ─────────────────────────────────────────────
     var selectedTab by remember { mutableStateOf(0) }
 
@@ -444,9 +448,8 @@ fun HomeScreen(
                             dtcReadStatus = readingStoredDtcsText
                             elmResponseBuffer.clear()
 
-                            manager.setPollingEnabled(false)
                             delay(200)
-                            manager.send("03")
+                            diagnosticsService.readStoredDtcs()
                         }
                     },
                     onClearDtcs = {
@@ -760,7 +763,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(250)
-                                                        manager.send("07")
+                                                        diagnosticsService.readPendingDtcs()
                                                     }
                                                 }
 
@@ -773,7 +776,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(250)
-                                                        manager.send("0A")
+                                                        diagnosticsService.readPermanentDtcs()
                                                     }
                                                 }
 
@@ -786,7 +789,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(300)
-                                                        manager.setPollingEnabled(true)
+                                                        diagnosticsService.resumePolling()
                                                     }
                                                 }
                                             }
@@ -869,7 +872,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(250)
-                                                        manager.send("07")
+                                                        diagnosticsService.readPendingDtcs()
                                                     }
                                                 }
 
@@ -882,7 +885,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(250)
-                                                        manager.send("0A")
+                                                        diagnosticsService.readPermanentDtcs()
                                                     }
                                                 }
 
@@ -895,7 +898,7 @@ fun HomeScreen(
 
                                                     scope.launch {
                                                         delay(300)
-                                                        manager.setPollingEnabled(true)
+                                                        diagnosticsService.resumePolling()
                                                     }
                                                 }
                                             }

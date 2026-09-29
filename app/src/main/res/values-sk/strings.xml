@@ -20,7 +20,6 @@
     <string name="tab_diagnostics">Diagnostika</string>
     <string name="tab_graphs">Grafy</string>
     <string name="tab_history">História</string>
-    <string name="tab_logs">Záznamy</string>
     <string name="tab_settings">Nastavenia</string>
     <string name="tab_all">Všetky</string>
     <string name="tab_static">Statická</string>
@@ -28,7 +27,6 @@
     <!--  Dashboard  -->
     <string name="static_data">Statické údaje</string>
     <string name="dtc_summary">Zhrnutie chybových kódov</string>
-    <string name="latest_codes">Posledné kódy</string>
     <string name="dynamic_data">Dynamické údaje</string>
     <string name="fuel">Palivo</string>
     <string name="airflow_pressure">Tlak vzduchu</string>
@@ -42,13 +40,9 @@
     <string name="connection">Pripojenie</string>
     <string name="idle">Bez pripojenia</string>
     <string name="connecting">Pripája sa...</string>
-    <string name="conn_to">Pripájam k %1$s</string>
     <string name="clear_dtc">Vymazávam chybové kódy...</string>
     <string name="dtc_cleared">Chybové kódy vymazané</string>
     <string name="error">Chyba</string>
-    <string name="adapter">Adaptér</string>
-    <string name="results">Výsledky</string>
-    <string name="last_frame">Posledný rámec: %1$s</string>
     <string name="no_devices">Nenašli sa žiadne zariadenia</string>
     <string name="region">Región</string>
     <string name="vin_format">Formát VIN</string>
@@ -67,14 +61,10 @@
     <string name="disconnect">Odpojiť</string>
     <string name="connect">Pripojiť</string>
     <string name="read_dtcs">Načítať všetky chybové kódy</string>
-    <string name="read_pending_dtcs">Načítať čakajúce chybové kódy</string>
-    <string name="read_permanent_dtcs">Načítať trvalé chybové kódy</string>
     <string name="clear_dtcs">Vymazať zobrazené kódy</string>
     <string name="read_vin">Načítať VIN</string>
     <string name="freeze_button">Pozastaviť</string>
     <!--  Live data  -->
-    <string name="live_data">Živé údaje</string>
-    <string name="live_graphs">Živé grafy</string>
     <string name="rpm">Otáčky</string>
     <string name="speed">Rýchlosť</string>
     <string name="coolant">Teplota chladiacej kvapaliny</string>
@@ -98,9 +88,7 @@
     <string name="vehicle_id">Identifikácia vozidla</string>
     <string name="manufacturer">Výrobca</string>
     <string name="country">Krajina</string>
-    <string name="unknown">Neznáme</string>
     <string name="year">Rok výroby</string>
-    <string name="dtcs">Chybové kódy</string>
     <string name="stored_dtcs">Uložené</string>
     <string name="pending_dtcs">Čakajúce</string>
     <string name="permanent_dtcs">Trvalé</string>
@@ -109,7 +97,6 @@
     <string name="critical">Kritické</string>
     <string name="warning">Varovanie</string>
     <string name="info">Info</string>
-    <string name="no_dtcs">Žiadne uložené chybové kódy</string>
     <string name="no_dtcs_in_category">Žiadne chybové kódy v tejto kategórii</string>
     <string name="reading_vin">Načítavam VIN...</string>
     <string name="vin_received">VIN prijatý</string>
@@ -125,12 +112,7 @@
     <string name="dtc_parse_failed">Odpoveď chybových kódov prijatá, parsovanie neúspešné</string>
     <string name="dtc_read_complete">Čítanie chýb dokončené</string>
     <!--  Units  -->
-    <string name="unit_kmh">km/h</string>
-    <string name="unit_celsius">°C</string>
-    <string name="unit_percent">%</string>
-    <string name="unit_bar">bar</string>
     <!--  History  -->
-    <string name="prev_scans">Predchádzajúce skeny vozidiel a ich história chybových kódov.</string>
     <string name="no_vehicles">Žiadne uložené vozidlá.</string>
     <string name="active">Aktívne</string>
     <string name="show_scans">Zobraziť skeny</string>
@@ -145,7 +127,6 @@
     <string name="confirm_delete_scan">Naozaj chcete vymazať sken z</string>
     <string name="cancel">Zrušiť</string>
     <!--  Settings  -->
-    <string name="settings">Nastavenia</string>
     <string name="appearance">Vzhľad</string>
     <string name="appearance_desc">Zvoľte spôsob zobrazenia témy aplikácie.</string>
     <string name="system_default">Podľa systému</string>
@@ -166,16 +147,11 @@
     <string name="country_usa">USA</string>
     <string name="country_canada">Kanada</string>
     <string name="country_mexico">Mexiko</string>
-    <string name="country_australia">Austrália</string>
-    <string name="country_argentina_chile">Argentína/Čile</string>
-    <string name="country_brazil">Brazília</string>
     <string name="country_japan">Japonsko</string>
     <string name="country_korea">Južná Kórea</string>
     <string name="country_china">Čína</string>
-    <string name="country_india_thailand">India/Thajsko</string>
     <string name="country_uk">Spojené kráľovstvo</string>
     <string name="country_germany">Nemecko</string>
-    <string name="country_russia">Rusko</string>
     <string name="country_italy">Taliansko</string>
     <string name="country_czech_republic">Česká republika</string>
     <string name="country_france">Francúzsko</string>

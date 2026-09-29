@@ -20,7 +20,6 @@
     <string name="tab_diagnostics">Diagnostics</string>
     <string name="tab_graphs">Graphs</string>
     <string name="tab_history">History</string>
-    <string name="tab_logs">Logs</string>
     <string name="tab_settings">Settings</string>
     <string name="tab_all">All</string>
     <string name="tab_static">Static</string>
@@ -28,7 +27,6 @@
     <!--  Dashboard  -->
     <string name="static_data">Static data</string>
     <string name="dtc_summary">DTC summary</string>
-    <string name="latest_codes">Latest codes</string>
     <string name="dynamic_data">Dynamic data</string>
     <string name="fuel">Fuel</string>
     <string name="airflow_pressure">Airflow pressure</string>
@@ -42,13 +40,9 @@
     <string name="connection">Connection</string>
     <string name="idle">Idle</string>
     <string name="connecting">Connecting...</string>
-    <string name="conn_to">Connecting to %1$s</string>
     <string name="clear_dtc">Clearing DTCs...</string>
     <string name="dtc_cleared">DTCs cleared</string>
     <string name="error">Error</string>
-    <string name="adapter">Adapter</string>
-    <string name="results">Results</string>
-    <string name="last_frame">Last frame: %1$s</string>
     <string name="no_devices">No devices found</string>
     <string name="region">Region</string>
     <string name="vin_format">VIN format</string>
@@ -67,14 +61,10 @@
     <string name="disconnect">Disconnect</string>
     <string name="connect">Connect</string>
     <string name="read_dtcs">Read all DTCs</string>
-    <string name="read_pending_dtcs">Read pending DTCs</string>
-    <string name="read_permanent_dtcs">Read permanent DTCs</string>
     <string name="clear_dtcs">Clear displayed codes</string>
     <string name="read_vin">Read VIN</string>
     <string name="freeze_button">Freeze</string>
     <!--  Live data  -->
-    <string name="live_data">Live data</string>
-    <string name="live_graphs">Live graphs</string>
     <string name="rpm">RPM</string>
     <string name="speed">Speed</string>
     <string name="coolant">Coolant temperature</string>
@@ -98,9 +88,7 @@
     <string name="vehicle_id">Vehicle identification</string>
     <string name="manufacturer">Manufacturer</string>
     <string name="country">Country</string>
-    <string name="unknown">Unknown</string>
     <string name="year">Year</string>
-    <string name="dtcs">DTCs</string>
     <string name="stored_dtcs">Stored</string>
     <string name="pending_dtcs">Pending</string>
     <string name="permanent_dtcs">Permanent</string>
@@ -109,7 +97,6 @@
     <string name="critical">Critical</string>
     <string name="warning">Warning</string>
     <string name="info">Info</string>
-    <string name="no_dtcs">No stored DTCs</string>
     <string name="no_dtcs_in_category">No DTCs in this category</string>
     <string name="reading_vin">Reading VIN...</string>
     <string name="vin_received">VIN received</string>
@@ -125,12 +112,7 @@
     <string name="dtc_parse_failed">DTC response received, parsing failed</string>
     <string name="dtc_read_complete">DTC read complete</string>
     <!--  Units  -->
-    <string name="unit_kmh">km/h</string>
-    <string name="unit_celsius">°C</string>
-    <string name="unit_percent">%</string>
-    <string name="unit_bar">bar</string>
     <!--  History  -->
-    <string name="prev_scans">Previously scanned vehicles and their DTC history.</string>
     <string name="no_vehicles">No vehicles saved yet.</string>
     <string name="active">Active</string>
     <string name="show_scans">Show scans</string>
@@ -145,7 +127,6 @@
     <string name="confirm_delete_scan">Do you really want to delete the scan from</string>
     <string name="cancel">Cancel</string>
     <!--  Settings  -->
-    <string name="settings">Settings</string>
     <string name="appearance">Appearance</string>
     <string name="appearance_desc">Choose how the application theme is displayed.</string>
     <string name="system_default">System default</string>
@@ -166,16 +147,11 @@
     <string name="country_usa">USA</string>
     <string name="country_canada">Canada</string>
     <string name="country_mexico">Mexico</string>
-    <string name="country_australia">Australia</string>
-    <string name="country_argentina_chile">Argentina/Chile</string>
-    <string name="country_brazil">Brazil</string>
     <string name="country_japan">Japan</string>
     <string name="country_korea">South Korea</string>
     <string name="country_china">China</string>
-    <string name="country_india_thailand">India/Thailand</string>
     <string name="country_uk">United Kingdom</string>
     <string name="country_germany">Germany</string>
-    <string name="country_russia">Russia</string>
     <string name="country_italy">Italy</string>
     <string name="country_czech_republic">Czech Republic</string>
     <string name="country_france">France</string>
