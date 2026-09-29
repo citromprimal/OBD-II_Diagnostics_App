@@ -57,7 +57,7 @@ data class DtcScanItemHistoryRow(
 
 class DtcRepository(
     private val supabase: io.github.jan.supabase.SupabaseClient = SupabaseProvider.client
-) {
+) : DtcDataSource {
     suspend fun insertScan(
         userId: String,
         vehicleId: String,
@@ -112,7 +112,7 @@ class DtcRepository(
         }
     }
 
-    suspend fun getScanHistory(
+    override suspend fun getScanHistory(
         userId: String,
         vehicleId: String
     ): List<DtcScanHistoryRow> {
@@ -128,7 +128,7 @@ class DtcRepository(
             .sortedByDescending { it.scannedAt }
     }
 
-    suspend fun getScanItems(
+    override suspend fun getScanItems(
         userId: String,
         scanId: String
     ): List<DtcScanItemHistoryRow> {
