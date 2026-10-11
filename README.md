@@ -35,7 +35,9 @@ The unit tests focus mainly on:
 - polling control,
 - DTC scan processing,
 - comparison of diagnostic history,
-- parsing of OBD-II PID values,
+- saving DTC scans,
+- saving vehicle and VIN information,
+- parsing OBD-II PID values,
 - edge cases and error scenarios.
 
 ## Test Doubles
@@ -47,6 +49,10 @@ For OBD-II communication, a mock of the following interface is used:
 For database-related logic, a mock of the following interface is used:
 
 `DtcDataSource`
+
+For vehicle and VIN-related database logic, a mock of the following interface is used:
+
+`VehicleDataSource`
 
 This makes it possible to test application logic without real external systems.
 
@@ -80,13 +86,15 @@ app/build/reports/jacoco/jacocoTestReport/html/index.html
 
 The final project version contains:
 
-- 32 unit tests,
+- 34 unit tests,
 - 100% test success rate,
-- 67% instruction coverage,
+- 68% instruction coverage,
 - 60% branch coverage,
-- 182 / 246 covered lines,
-- 16 / 19 covered methods,
-- 3 / 3 covered classes.
+- 200 / 264 covered lines,
+- 19 / 22 covered methods,
+- 4 / 4 covered classes.
+
+The database-related package reached 100% instruction and branch coverage within the selected tested scope.
 
 ## Git Tags
 
