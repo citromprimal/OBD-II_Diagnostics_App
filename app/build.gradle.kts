@@ -122,6 +122,7 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         include(
             "**/DiagnosticsService.class",
             "**/DtcService.class",
+            "**/VehicleService.class",
             "**/Elm327Parser.class"
         )
     }

@@ -1,5 +1,9 @@
 package com.primal.cardiagnosticsapp
 
+import com.primal.cardiagnosticsapp.data.DtcDataSource
+import com.primal.cardiagnosticsapp.data.DtcItem
+import com.primal.cardiagnosticsapp.data.DtcService
+import com.primal.cardiagnosticsapp.data.DtcSeverity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -8,6 +12,7 @@ import io.mockk.Runs
 import io.mockk.coVerifyOrder
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
+import org.junit.Assert.assertEquals
 
 class DiagnosticsServiceTest {
 
@@ -143,5 +148,47 @@ class DiagnosticsServiceTest {
         val service = DiagnosticsService(obdManager)
 
         service.readVin()
+    }
+
+    @Test
+    fun `saveScan stores DTC scan and returns scan id`() = runTest {
+        val dataSource = mockk<DtcDataSource>()
+
+        val dtcs = listOf(
+            DtcItem(
+                code = "P0300",
+                severity = DtcSeverity.WARNING
+            ),
+            DtcItem(
+                code = "P0420",
+                severity = DtcSeverity.WARNING
+            )
+        )
+
+        coEvery {
+            dataSource.insertScan(
+                userId = "user-1",
+                vehicleId = "vehicle-1",
+                dtcs = dtcs
+            )
+        } returns "scan-123"
+
+        val service = DtcService(dataSource)
+
+        val result = service.saveScan(
+            userId = "user-1",
+            vehicleId = "vehicle-1",
+            dtcs = dtcs
+        )
+
+        assertEquals("scan-123", result)
+
+        coVerify(exactly = 1) {
+            dataSource.insertScan(
+                userId = "user-1",
+                vehicleId = "vehicle-1",
+                dtcs = dtcs
+            )
+        }
     }
 }

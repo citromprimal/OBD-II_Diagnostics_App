@@ -58,7 +58,7 @@ data class DtcScanItemHistoryRow(
 class DtcRepository(
     private val supabase: io.github.jan.supabase.SupabaseClient = SupabaseProvider.client
 ) : DtcDataSource {
-    suspend fun insertScan(
+    override suspend fun insertScan(
         userId: String,
         vehicleId: String,
         dtcs: List<DtcItem>

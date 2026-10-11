@@ -22,8 +22,8 @@ data class VehicleRow(
 
 class VehicleRepository(
     private val supabase: SupabaseClient = SupabaseProvider.client
-) {
-    suspend fun insertVehicle(
+) : VehicleDataSource {
+    override suspend fun insertVehicle(
         userId: String,
         vin: String,
         manufacturer: String?,

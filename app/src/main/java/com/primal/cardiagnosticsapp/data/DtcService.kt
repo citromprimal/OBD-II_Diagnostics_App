@@ -29,4 +29,16 @@ class DtcService(
 
         return latestCodes == newCodes
     }
+
+    suspend fun saveScan(
+        userId: String,
+        vehicleId: String,
+        dtcs: List<DtcItem>
+    ): String {
+        return dataSource.insertScan(
+            userId = userId,
+            vehicleId = vehicleId,
+            dtcs = dtcs
+        )
+    }
 }
